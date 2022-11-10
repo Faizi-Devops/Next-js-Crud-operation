@@ -45,6 +45,16 @@ const StudentList = () => {
         setSlass("")
         setKoll("")
     }
+    const OnDeleteHandler = (index:number) =>{
+        let newKuch = data.filter((value,i)=>{
+
+            if(i!=index){
+                return index;
+            }
+        })
+        setData([...newKuch])
+
+    }
 
     return (
         <div>
@@ -69,6 +79,7 @@ const StudentList = () => {
                         <th scope="col">Class</th>
                         <th scope="col">Batch</th>
                         <th scope="col">Roll</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 {
@@ -79,6 +90,9 @@ const StudentList = () => {
                                 <td>{value.class}</td>
                                 <td>{value.batch}</td>
                                 <td>{value.roll}</td>
+                                <td>
+                                <button type="button" className="btn btn-danger" onClick={()=>OnDeleteHandler(index)}>Delete</button>
+                                </td>
                             </tr>
                         )
 
